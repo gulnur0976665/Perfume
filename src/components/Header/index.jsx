@@ -353,7 +353,7 @@ const Header = () => {
           ) : null}
           {modal1 ? (
             <div className="relative">
-              <div className="w-[300px]  max-[992px]:w-[260px]  h-[200px] max-[992px]:h-[260px] absolute  z-50  top-0 right-0 flex items-start  flex-col gap-3  bg-white shadow-2xl rounded-md  px-[30px] py-[30px]">
+              <div className="w-[300px]  max-[992px]:w-[260px]  h-[200px] max-[992px]:h-[260px] absolute  z-50  top-0 right-0 flex items-start max-[1200px]:flex  flex-col gap-3  bg-white shadow-2xl rounded-md  px-[30px] py-[30px]">
                 <a
                   onClick={() => setModal1(false)}
                   className="absolute top-0 right-[10px] text-[30px] text-black">

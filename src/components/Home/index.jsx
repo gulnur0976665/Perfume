@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Footer from "../Footer";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -44,7 +44,9 @@ const Home = () => {
       },
     ],
   };
-
+// useEffect(() => {
+//   sortedProduct()
+// },[])
   return (
     <div className="container max-[446px]:px-2">
       <div className="">
