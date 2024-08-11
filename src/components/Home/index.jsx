@@ -44,9 +44,6 @@ const Home = () => {
       },
     ],
   };
-// useEffect(() => {
-//   sortedProduct()
-// },[])
   return (
     <div className="container max-[446px]:px-2">
       <div className="">

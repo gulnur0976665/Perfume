@@ -12,7 +12,7 @@ import { HiBars3 } from "react-icons/hi2";
 import { IoClose } from "react-icons/io5";
 import { useAuth } from "../../context";
 import { MdChevronRight } from "react-icons/md";
-
+import user1 from "../../assets/user.png";
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -77,6 +77,7 @@ const Header = () => {
       await logOutUser();
       navigate(`/`);
       setModal1(false);
+      setModalIcons(false);
     } catch (error) {
       errormessage(error.message);
     }
@@ -178,17 +179,18 @@ const Header = () => {
                       <div>
                         {user ? (
                           <div className=" ">
-                           <h1
-                      className="text-[20px] max-[992px]:text-[18px]"
-                      onClick={hundleLogout}>
-                      ВЫЙТИ
-                    </h1>
+                            <h1
+                              className="text-[20px] max-[992px]:text-[18px]"
+                              onClick={hundleLogout}>
+                              ВЫЙТИ
+                            </h1>
                           </div>
                         ) : (
                           <div
                             onClick={() => {
                               dispatch(setModall(true));
-                              
+                              setModalIcons(false);
+
                               // setError1(false);
                             }}
                             className="flex items-center gap-1  cursor-pointer  ">
@@ -210,15 +212,16 @@ const Header = () => {
                         </a>
                         <h1 className="text-[17px] font-medium">Basket</h1>
                       </div>
-                      <div onClick={() => {
-                      if (user) {
-                        navigate(`/create`);
-                      } else {
-                        navigate(`*`);
-                      }
-                    }}
+                      <div
+                        onClick={() => {
+                          if (user) {
+                            navigate(`/create`);
+                          } else {
+                            navigate(`*`);
+                          }
+                        }}
                         className="flex items-center gap-3 cursor-pointer">
-                        <a   className="text-[18px]  hover:text-green-600">
+                        <a className="text-[18px]  hover:text-green-600">
                           <MdAddShoppingCart />
                         </a>
                         <h1 className="text-[17px] font-medium">
@@ -249,7 +252,7 @@ const Header = () => {
                     <div className=" ">
                       <img
                         onClick={() => setModal1(true)}
-                        src={user.photoURL ? user.photoURL : null}
+                        src={user.photoURL ? user.photoURL : user1}
                         alt=""
                         className="rounded-[50%] w-[60px] max-[992px]:w-[50px]  h-[60px] max-[992px]:h-[50px]  cursor-pointer"
                       />
@@ -362,7 +365,7 @@ const Header = () => {
                 {user ? (
                   <div className="flex items-center gap-2 text-[20px] cursor-pointer ">
                     <img
-                      src={user.photoURL ? user.photoURL : null}
+                      src={user.photoURL ? user.photoURL : user1}
                       alt=""
                       className="rounded-[50%] w-[60px] max-[992px]:w-[40px] h-[60px] max-[992px]:h-[40px]  "
                     />
