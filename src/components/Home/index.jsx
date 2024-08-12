@@ -1,14 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../Footer";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 const Home = () => {
-  const { product } = useSelector((s) => s.pro);
+  const [data, setData] = useState([]);
 
-  const sortedProduct = [...product].sort((a, b) => b._id - a._id);
+  const api = "https://api.elchocrud.pro/api/v1/ce661c48b0ea052e6f9b2f8cd6eef69a/Perfumee";
+
+  async function getProduct() {
+    try {
+      let { data } = await axios.get(api);
+      setData(data);
+    } catch (error) {
+      console.log("Invalid error API", error);
+    }
+  }
+  const sortPro = data ? [...data].sort((a, b) => b._id - a._id) : [];
+  useEffect(() => {
+    getProduct();
+  }, []);
 
   var settings = {
     dots: true,
@@ -61,7 +75,7 @@ const Home = () => {
           <div className="bg-[hsla(210,6%,85%,1)] w-full h-[432px] max-[446px]:h-[180px] max-[1200px]:h-[350px] max-lg:h-[300px]">
             <div className="">
               <Slider {...settings}>
-                {sortedProduct.map((pro, index) => (
+                {sortPro.map((pro, index) => (
                   <div key={index} className="max-[446px]:px-1">
                     <img
                       src={pro.url}

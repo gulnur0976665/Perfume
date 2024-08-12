@@ -7,7 +7,7 @@ import Category from "../Category";
 import { HiBars3 } from "react-icons/hi2";
 
 const Product = () => {
-  const { product } = useSelector((s) => s.pro);
+  const { product,price } = useSelector((s) => s.pro);
   const [cat,setCat] = useState(false)
   const dispatch = useDispatch();
   const getIpProduct = () => async (dispatch) => {
@@ -38,7 +38,7 @@ const Product = () => {
           }
         </div>
           <div className="flex items-start flex-wrap  gap-10 max-[1200px]:gap-7 ml-80 max-lg:ml-48 max-[446px]:ml-10">
-            {product?.map((el) => (
+            {product?.filter((item) => +item.price >= price).map((el) => (
               <ProductCarts el={el} key={el._id} />
             ))}
           </div>

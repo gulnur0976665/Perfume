@@ -4,6 +4,7 @@ const initialState = {
   product: [],
   modall: false,
   user: JSON.parse(localStorage.getItem("user")) || null,
+  price: 0,
 };
 
 export const CreateProductSlice = createSlice({
@@ -23,8 +24,11 @@ export const CreateProductSlice = createSlice({
       state.user = action.payload;
       // localStorage.setItem("user", JSON.stringify(action.payload));
     },
+    sorPrice(state,action){
+      state.price = action.payload
+    }
   },
 });
-export const { getProduct, productDelete, setModall, getUser } =
+export const { getProduct, productDelete, setModall, getUser,sorPrice } =
   CreateProductSlice.actions;
 export default CreateProductSlice.reducer;

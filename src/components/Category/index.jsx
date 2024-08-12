@@ -3,10 +3,14 @@ import { GoTriangleRight } from "react-icons/go";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import CategoryProduct from "../CategoryProduct";
+import { sorPrice } from "../../redux/createProductSlice";
 
 const Category = () => {
   const nav = useNavigate();
+  const { price } = useSelector((s) => s.pro);
+  console.log(price, "price");
 
+  const dispatch = useDispatch();
   return (
     <div className="">
       <div className="container">
@@ -33,6 +37,20 @@ const Category = () => {
                     UNISEX
                   </span>
                 </h1>
+              </div>
+              <div className="">
+                <h1 className="text-white font-bold text-[30px]">PRICE</h1>
+                <input
+                  onChange={(e) => dispatch(sorPrice(e.target.value))}
+                  value={price}
+                  type="range"
+                  id="volume"
+                  name="volume"
+                  min="0"
+                  max="100"
+                  className="w-[200px]"
+                />
+                <h1 className="text-white text-[17px]">Price: {price} - 100%</h1>
               </div>
               <h1 className="text-white font-bold text-[30px]">BRAND</h1>
               <div className="flex items-start flex-col gap-3">
