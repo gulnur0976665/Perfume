@@ -26,7 +26,7 @@ const CreateProduct = () => {
       quantity: 1,
     };
     axios.post(
-      `https://api.elchocrud.pro/api/v1/ce661c48b0ea052e6f9b2f8cd6eef69a/Perfumee
+      `https://api.elchocrud.pro/api/v1/3fd97-aabad-e11a4/Perfume
 `,
       newProduct
     );
